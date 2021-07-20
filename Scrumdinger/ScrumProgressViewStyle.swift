@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct ScrumProgressViewStyle: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct ScrumProgressViewStyle: ProgressViewStyle {
+    var scrumColor: Color
+    
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10.0)
+                .fill(scrumColor.accessibleFontColor)
+                .frame(height: 20.0)
+            ProgressView(configuration)
+                .frame(height: 12.0)
+                .padding(.horizontal)
+        }
     }
 }
 
-struct ScrumProgressViewStyle_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrumProgressViewStyle()
-    }
-}
